@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team reporting App</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="./app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    
     
 </head>
 <body>
     <fieldset>
         <legend><em><strong> Login</strong> </em></legend>
-        <form id="login" >
+        <form id="login" method="POST"  >
             <div id="email">
             Email*<br> 
             <input type="email" required id="loginEmail"> <br>
@@ -26,5 +29,7 @@
             
         </form>
     </fieldset>
+    <script src="./firebase.js"></script>
+    <script src="./app.js"></script>
 </body>
 </html>
