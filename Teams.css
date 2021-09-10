@@ -4,6 +4,11 @@ fieldset{
     margin-top: 2% !important;
     
 }
+#welcomeheading{
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    
+}
 
 h3{
     text-align: center;

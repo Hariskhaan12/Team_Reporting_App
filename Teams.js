@@ -15,9 +15,18 @@ firebase.auth().onAuthStateChanged(function (user) {
             <div id="title"><strong>${data[prop].category}</strong></div>
             <div id="member"><strong>Members:</strong> ${data[prop].TeamEmail}</div>
         </div>`;
-
+                
             }
             OwnTeamSection.innerHTML = html;
+            if(html=='' || html==null)
+            {
+                document.getElementById("heading1").style.display="none";
+                document.getElementById("welcomeheading").innerHTML="Welcome , "+user.email.split('@')[0];
+            }
+            else{
+                document.getElementById("welcomeheading").style.display="none";
+                document.getElementById("heading1").style.display="block";
+            }
         });
         //Team you are partof check 
         Teampartdatabase = database_ref.child('TeamPartof/' + user.uid);
@@ -57,11 +66,21 @@ firebase.auth().onAuthStateChanged(function (user) {
             </div>`;
             }
             PartTeamSection.innerHTML = html2;
+            if(html2==null || html2==''){
+                document.getElementById("heading2").style.display="none";
+                document.getElementById("welcomeheading").innerHTML="Welcome , "+user.email.split('@')[0];
+
+            }
+            else{
+                document.getElementById("welcomeheading").style.display="none";
+                document.getElementById("heading2").style.display="block";
+            }
         });
     }
     else {
         alert("Some Error Occured While fetching Your data")
     }
+   
 });
 // -------------------------- Create team-----------------------
 const CreateTeam = () => {
