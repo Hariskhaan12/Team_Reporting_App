@@ -1,4 +1,3 @@
-
   const firebaseConfig = {
     apiKey: "AIzaSyAz_MTtq4KGs6AQQa1nXz_UHXIsp7lefsk",
     authDomain: "teamreportapp.firebaseapp.com",

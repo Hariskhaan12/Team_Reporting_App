@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script><title>Document</title>
+    <link rel="stylesheet" href="./TeamSetting.css">
+</head>
+<body>
+    <fieldset>
+        <legend><em><strong>Team Settings</strong></em></legend>
+        <h2>Questions:</h2>
+        <input type="text" id="Question1" placeholder="Question 1"> 
+        <input type="text" id="Question2" placeholder="Question 2"> 
+        <input type="text" id="Question3" placeholder="Question 3"> 
+        <h2 id="h2">Members:</h2>
+        <div id="MembersEmails">
+            
+        </div>
+
+        <button id="save" onclick="save()">Save Changes</button>
+   
+    </fieldset>
+  
+    <script src="./firebase.js"></script>
+    <script src="./TeamSetting.js"></script>
+</body>
+</html>

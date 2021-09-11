@@ -1,0 +1,19 @@
+input{
+    border: none;
+    border-bottom: 1px solid black;
+    display: block;
+    border-color: grey;
+    margin: 2%;
+    width: 40%;
+    outline-style: none;
+    
+}
+#save{
+    float: right;
+    padding: 5px;
+    background-color: rgb(145, 228, 51);
+    border-radius: 5px;
+    color: black;
+    font-weight: bolder;
+    font-family: sans-serif;
+}

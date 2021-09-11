@@ -9,7 +9,16 @@ fieldset{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
     
 }
-
+#teamsetting{
+    width: fit-content;
+    position: absolute;
+    left: 80%;
+    top: 22%;
+    background-color: rgb(235, 130, 45);
+    color: #ffff;
+    
+    /* margin-left: 85%; */
+}
 h3{
     text-align: center;
 }

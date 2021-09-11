@@ -12,16 +12,17 @@ const SignUp = () => {
 
     auth.createUserWithEmailAndPassword(email,pass)
     .then(()=>{
-        alert("SignUp succesfully")
         var user=auth.currentUser;
         var database_ref=database.ref();
         let userdata={
-        admin:false,
-        name:document.getElementById("name").value,
-        email:document.getElementById("em").value,
-        pass:document.getElementById("password").value
+            admin:false,
+            name:document.getElementById("name").value,
+            email:document.getElementById("em").value,
+            pass:document.getElementById("password").value
         };
         database_ref.child('Users/'+ user.uid).set(userdata);
+        alert("SignUp succesfully")
+        
     })
     .catch((error)=>{
         alert(error.message);

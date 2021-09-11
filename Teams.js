@@ -1,19 +1,19 @@
 auth = firebase.auth();
 database = firebase.database();
-
-
+var mymemberemail='';
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         database_ref = database.ref();
         Teamdatabase = database_ref.child('TeamsYouOwn/' + user.uid);
         let html = '';
         let OwnTeamSection = document.getElementById("OwnTeam");
-        Teamdatabase.on('value', (snapshot) => {
+        Teamdatabase.once('value', (snapshot) => {
             var data = snapshot.val();
             for (const prop in data) {
-                html += `<div id="team">
+             html += `<div id="team">
             <div id="title"><strong>${data[prop].category}</strong></div>
             <div id="member"><strong>Members:</strong> ${data[prop].TeamEmail}</div>
+            <button id="teamsetting" onclick="TeamSetting('${data[prop].category}','${data[prop].TeamEmail}')">Settings </button>
         </div>`;
                 
             }
@@ -26,20 +26,22 @@ firebase.auth().onAuthStateChanged(function (user) {
             else{
                 document.getElementById("welcomeheading").style.display="none";
                 document.getElementById("heading1").style.display="block";
+                
             }
+            
         });
+        
         //Team you are partof check 
         Teampartdatabase = database_ref.child('TeamPartof/' + user.uid);
 
         Teamdatabase = database_ref.child('TeamsYouOwn');
-        Teamdatabase.on('value', (snapshot) => {
+        Teamdatabase.once('value', (snapshot) => {
             var partdata = snapshot.val();
             for (const prop in partdata) {
                 let data2 = partdata[prop];
                 for (const innerprop in data2) {
                     var totalEmail = data2[innerprop].TeamEmail;
                     var newemails = totalEmail.split(",");
-                    // console.log(newemails);
                     for (i = 0; i < newemails.length; i++) {
                         if (newemails[i] == user.email) {
                             const partTeamdata = {
@@ -57,7 +59,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         partTeamDatabase = database_ref.child('TeamPartof/' + user.uid);
         let html2 = '';
         let PartTeamSection = document.getElementById("PartTeam");
-        partTeamDatabase.on('value', (snapshot) => {
+        partTeamDatabase.once('value', (snapshot) => {
             var data2 = snapshot.val();
             for (const prop in data2) {
                 html2 += `<div id="team">
@@ -76,12 +78,18 @@ firebase.auth().onAuthStateChanged(function (user) {
                 document.getElementById("heading2").style.display="block";
             }
         });
+        
     }
     else {
         alert("Some Error Occured While fetching Your data")
     }
    
 });
+
+
+
+
+
 // -------------------------- Create team-----------------------
 const CreateTeam = () => {
     var user = auth.currentUser;
@@ -101,6 +109,21 @@ const CreateTeam = () => {
     //set data into database 
     Teamdatabase = database_ref.child('TeamsYouOwn/' + user.uid)
     Teamdatabase.child(OwnTeam.TeamName).set(OwnTeam);
-
-
 }
+
+
+// -----------------------TEAM SETTING------------------------------
+
+const TeamSetting = (category, email) => {
+    database_ref = database.ref();
+    var settingdata = {
+        category: category,
+        email: email
+    }
+    database_ref.child('TeamSetting/' +category).set(settingdata);
+    location.replace("TeamSetting.html");
+}
+
+
+
+
